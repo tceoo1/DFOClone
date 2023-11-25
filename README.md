@@ -15,4 +15,4 @@ DFO Cloneは、海外で頒布されているDual Frequency Oscillatorモジュ�
 * (3.3Vのとき)裏面にあるJP2をハンダでブリッジする
 * 機器に組み込む
 
-詳細な使い方は[ドキュメント](https://github.com/tceoo1/DFOClone/tree/main/doc)を参照してください。
+詳細な使い方は[ドキュメント](https://github.com/tceoo1/DFOClone/tree/main/docs)を参照してください。
