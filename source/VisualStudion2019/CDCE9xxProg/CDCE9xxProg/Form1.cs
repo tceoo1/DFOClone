@@ -192,6 +192,9 @@ namespace CDCE9xxProg
                 //close
                 serialPort1.Close();
                 btnSend.Enabled = false;
+                btnRead.Enabled = false;
+                cmbPortSelect.Enabled = true;
+                btnReloadPort.Enabled = true;
                 btnConnectDisconnect.Text = "接続";
             }
             else
@@ -241,6 +244,9 @@ namespace CDCE9xxProg
                 }
                 cmbI2CAddress.SelectedIndex = 0;
                 btnSend.Enabled = true;
+                btnRead.Enabled = true;
+                cmbPortSelect.Enabled = false;
+                btnReloadPort.Enabled = false;
                 btnConnectDisconnect.Text = "切断";
             }
         }
@@ -254,7 +260,7 @@ namespace CDCE9xxProg
         {
             List<byte> send = new List<byte>();
 
-            send.Add((byte)'R');
+            send.Add((byte)'R');    
             send.Add(I2CAddress);
             send.Add(DataSize);
             serialPort1.DiscardInBuffer();
@@ -370,6 +376,12 @@ namespace CDCE9xxProg
 
         private void btnSaveHex_Click(object sender, EventArgs e)
         {
+            if (dictWriteData.Count < 16)
+            {
+                MessageBox.Show("データがありません");
+                return;
+            }
+
             var r = saveFileDialog1.ShowDialog();
             if (r != DialogResult.OK) return;
 
@@ -377,18 +389,6 @@ namespace CDCE9xxProg
                     //0 12 3456 78 9ABC
                     //: 01 0000 00 01FE
                     //: 00 0000 01 FF
-                    if (line.StartsWith(":") == false) continue;
-                    if (line.Length != 13 && line.Length != 11) continue;
-                    string strLength = line.Substring(1, 2);
-                    byte Length = Convert.ToByte(strLength, 16);
-                    if (Length > 1) continue;
-                    string strOffset = line.Substring(3, 4);
-                    ushort Offset = Convert.ToUInt16(strOffset, 16);
-                    string strType = line.Substring(7, 2);
-                    byte Type = Convert.ToByte(strType, 16);
-                    //List<byte> lstData = new List<byte>();
-                    byte Data = 0xFF;
-                    string strData = string.Empty;            
             */
             using (var sw = new StreamWriter(saveFileDialog1.FileName))
             {
@@ -410,6 +410,11 @@ namespace CDCE9xxProg
                 }
                 sw.WriteLine(":00000001FF");
             }
+        }
+
+        private void btnReloadPort_Click(object sender, EventArgs e)
+        {
+            SetCOMMPorts();
         }
     }
 }

@@ -61,6 +61,7 @@ namespace CDCE9xxProg
             this.chkChangeLoadCapacitance = new System.Windows.Forms.CheckBox();
             this.btnSaveHex = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btnReloadPort = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbPortSelect
@@ -69,14 +70,14 @@ namespace CDCE9xxProg
             this.cmbPortSelect.FormattingEnabled = true;
             this.cmbPortSelect.Location = new System.Drawing.Point(14, 35);
             this.cmbPortSelect.Name = "cmbPortSelect";
-            this.cmbPortSelect.Size = new System.Drawing.Size(266, 20);
+            this.cmbPortSelect.Size = new System.Drawing.Size(295, 20);
             this.cmbPortSelect.TabIndex = 0;
             // 
             // btnConnectDisconnect
             // 
-            this.btnConnectDisconnect.Location = new System.Drawing.Point(286, 14);
+            this.btnConnectDisconnect.Location = new System.Drawing.Point(315, 32);
             this.btnConnectDisconnect.Name = "btnConnectDisconnect";
-            this.btnConnectDisconnect.Size = new System.Drawing.Size(85, 45);
+            this.btnConnectDisconnect.Size = new System.Drawing.Size(75, 24);
             this.btnConnectDisconnect.TabIndex = 1;
             this.btnConnectDisconnect.Text = "接続";
             this.btnConnectDisconnect.UseVisualStyleBackColor = true;
@@ -134,9 +135,9 @@ namespace CDCE9xxProg
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 98);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 12);
+            this.label3.Size = new System.Drawing.Size(80, 12);
             this.label3.TabIndex = 5;
-            this.label3.Text = "ファイルパス";
+            this.label3.Text = "HEXファイルパス";
             // 
             // btnBrowse
             // 
@@ -203,6 +204,7 @@ namespace CDCE9xxProg
             // 
             // btnRead
             // 
+            this.btnRead.Enabled = false;
             this.btnRead.Location = new System.Drawing.Point(129, 200);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(90, 24);
@@ -307,7 +309,7 @@ namespace CDCE9xxProg
             // chkChangeLoadCapacitance
             // 
             this.chkChangeLoadCapacitance.AutoSize = true;
-            this.chkChangeLoadCapacitance.Location = new System.Drawing.Point(243, 180);
+            this.chkChangeLoadCapacitance.Location = new System.Drawing.Point(243, 171);
             this.chkChangeLoadCapacitance.Name = "chkChangeLoadCapacitance";
             this.chkChangeLoadCapacitance.Size = new System.Drawing.Size(124, 16);
             this.chkChangeLoadCapacitance.TabIndex = 14;
@@ -329,11 +331,22 @@ namespace CDCE9xxProg
             // 
             this.saveFileDialog1.Filter = "HEXファイル|*.hex|すべてのファイル|*.*";
             // 
+            // btnReloadPort
+            // 
+            this.btnReloadPort.Location = new System.Drawing.Point(315, 6);
+            this.btnReloadPort.Name = "btnReloadPort";
+            this.btnReloadPort.Size = new System.Drawing.Size(75, 23);
+            this.btnReloadPort.TabIndex = 15;
+            this.btnReloadPort.Text = "ポート更新";
+            this.btnReloadPort.UseVisualStyleBackColor = true;
+            this.btnReloadPort.Click += new System.EventHandler(this.btnReloadPort_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(402, 518);
+            this.Controls.Add(this.btnReloadPort);
             this.Controls.Add(this.chkChangeLoadCapacitance);
             this.Controls.Add(this.cmbLoadCapacitance);
             this.Controls.Add(this.label7);
@@ -355,7 +368,7 @@ namespace CDCE9xxProg
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnConnectDisconnect);
             this.Controls.Add(this.cmbPortSelect);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "CDCE9XX Programmer";
@@ -393,6 +406,7 @@ namespace CDCE9xxProg
         private System.Windows.Forms.CheckBox chkChangeLoadCapacitance;
         private System.Windows.Forms.Button btnSaveHex;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button btnReloadPort;
     }
 }
 
